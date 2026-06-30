@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_bacf145c8e63e018e7c0f6b577614d6e {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+    <div style="position: fixed; bottom: 30px; left: 30px; z-index: 9999;
+                background-color: white; padding: 10px; border: 2px solid grey;
+                border-radius: 6px; font-size: 14px;">
+        <b>Route Legend</b><br>
+        <span style="color:red;">&#9644;&#9644;&#9644;</span> Shortest path<br>
+        <span style="color:green;">&#9644;&#9644;&#9644;</span> Best-lit path
+    </div>
+    
+    
+            <div class="folium-map" id="map_bacf145c8e63e018e7c0f6b577614d6e" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_bacf145c8e63e018e7c0f6b577614d6e = L.map(
+                "map_bacf145c8e63e018e7c0f6b577614d6e",
+                {
+                    center: [37.7873, -122.4208],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 15,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_2caa011cd9edd19a38754dc5c6915e42 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_2caa011cd9edd19a38754dc5c6915e42.addTo(map_bacf145c8e63e018e7c0f6b577614d6e);
+        
+    
+            var poly_line_0da9627d165ce5634868b36c8d5799ea = L.polyline(
+                [[37.7837972, -122.4141597], [37.783821, -122.4141796], [37.7838085, -122.4142729], [37.7845855, -122.4144305], [37.784577, -122.4145005], [37.7846539, -122.4145316], [37.7845389, -122.4154296], [37.7844547, -122.4160916], [37.7843563, -122.4168655], [37.7843311, -122.4170631], [37.7842457, -122.4177356], [37.7841188, -122.4187296], [37.7840364, -122.4193813], [37.7840078, -122.4196057], [37.7838505, -122.4208435], [37.7839354, -122.420861], [37.7839169, -122.4210047], [37.7839065, -122.4210857], [37.7838869, -122.421238], [37.7842506, -122.4213112], [37.7842717, -122.421315], [37.7841032, -122.4226451], [37.7840883, -122.4227628], [37.784551, -122.4228563], [37.7845782, -122.4232099], [37.7849932, -122.4238675], [37.7852793, -122.4245893], [37.7852826, -122.4246895], [37.7854276, -122.4247192], [37.7855665, -122.4247469], [37.7856935, -122.4247724], [37.785801, -122.4247942], [37.7859176, -122.4248169], [37.7860274, -122.4248401], [37.78613, -122.4248608], [37.7862044, -122.4248759], [37.7863025, -122.4248957], [37.7871398, -122.4250653], [37.7876057, -122.4251593], [37.7879893, -122.4252367], [37.7880571, -122.4253589], [37.787873, -122.426807], [37.787952, -122.42683], [37.7879457, -122.4269168], [37.7883242, -122.4269932], [37.7887183, -122.4270719], [37.7887934, -122.4270878], [37.7888795, -122.4271052], [37.7897469, -122.42728], [37.790603, -122.4274528], [37.7906769, -122.4274677], [37.7906656, -122.4275563], [37.7907355, -122.4275706], [37.79073, -122.4276139]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_bacf145c8e63e018e7c0f6b577614d6e);
+        
+    
+            poly_line_0da9627d165ce5634868b36c8d5799ea.bindTooltip(
+                `<div>
+                     Shortest path (ignores lighting)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_f8ded2e93d5dccc22d00bd3a3683266d = L.polyline(
+                [[37.7837972, -122.4141597], [37.783821, -122.4141796], [37.7838085, -122.4142729], [37.7845855, -122.4144305], [37.784664, -122.4144458], [37.7846539, -122.4145316], [37.7845389, -122.4154296], [37.7844547, -122.4160916], [37.7843563, -122.4168655], [37.7843311, -122.4170631], [37.7842457, -122.4177356], [37.7841188, -122.4187296], [37.7840364, -122.4193813], [37.7840078, -122.4196057], [37.7838505, -122.4208435], [37.7839354, -122.420861], [37.7839169, -122.4210047], [37.7846909, -122.4211656], [37.7847643, -122.4212116], [37.7848423, -122.4212231], [37.7856189, -122.4213786], [37.7856981, -122.4213926], [37.7857816, -122.4213782], [37.7865517, -122.4215424], [37.7866282, -122.4215574], [37.7867185, -122.4215743], [37.7874876, -122.4217299], [37.7875589, -122.4217762], [37.7876408, -122.4217933], [37.7884102, -122.4219483], [37.7884891, -122.4219635], [37.7885693, -122.4220184], [37.7893392, -122.4221701], [37.7894167, -122.422185], [37.7895018, -122.4222021], [37.7902794, -122.4223723], [37.7903296, -122.4223818], [37.790314, -122.4225354], [37.7901633, -122.4237512], [37.7901653, -122.4239912], [37.7910277, -122.4241683], [37.7910959, -122.4241848], [37.7910824, -122.4242887], [37.7908998, -122.4257154], [37.7908865, -122.425821], [37.7908751, -122.4259119], [37.7906892, -122.4273715], [37.7906769, -122.4274677], [37.7906656, -122.4275563], [37.7907355, -122.4275706], [37.79073, -122.4276139]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_bacf145c8e63e018e7c0f6b577614d6e);
+        
+    
+            poly_line_f8ded2e93d5dccc22d00bd3a3683266d.bindTooltip(
+                `<div>
+                     Best-lit path
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_9b7b70d2ca4df334c926a8c02cddfbc4 = L.marker(
+                [37.7837972, -122.4141597],
+                {
+}
+            ).addTo(map_bacf145c8e63e018e7c0f6b577614d6e);
+        
+    
+            var icon_4ded99ce0f0c351c607eed2ecdc0e372 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2c2efed659ab7762fa429242b9e382a0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f995a59674cf86a68b6aeb209fea60de = $(`<div id="html_f995a59674cf86a68b6aeb209fea60de" style="width: 100.0%; height: 100.0%;">Start: The Ice Cream Bar (Cole Valley)</div>`)[0];
+                popup_2c2efed659ab7762fa429242b9e382a0.setContent(html_f995a59674cf86a68b6aeb209fea60de);
+            
+        
+
+        marker_9b7b70d2ca4df334c926a8c02cddfbc4.bindPopup(popup_2c2efed659ab7762fa429242b9e382a0)
+        ;
+
+        
+    
+    
+                marker_9b7b70d2ca4df334c926a8c02cddfbc4.setIcon(icon_4ded99ce0f0c351c607eed2ecdc0e372);
+            
+    
+            var marker_d01f51425af044d115143f884cc37600 = L.marker(
+                [37.79073, -122.4276139],
+                {
+}
+            ).addTo(map_bacf145c8e63e018e7c0f6b577614d6e);
+        
+    
+            var icon_d3c8e4c51b7711cc134a3be8b037eabc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fde48668698399625e27236dc3830dd0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_437c54a77bcbc8ad399975d69e3954b1 = $(`<div id="html_437c54a77bcbc8ad399975d69e3954b1" style="width: 100.0%; height: 100.0%;">Destination: Painted Ladies! (Alamo Square)</div>`)[0];
+                popup_fde48668698399625e27236dc3830dd0.setContent(html_437c54a77bcbc8ad399975d69e3954b1);
+            
+        
+
+        marker_d01f51425af044d115143f884cc37600.bindPopup(popup_fde48668698399625e27236dc3830dd0)
+        ;
+
+        
+    
+    
+                marker_d01f51425af044d115143f884cc37600.setIcon(icon_d3c8e4c51b7711cc134a3be8b037eabc);
+            
+</script>
+</html>
