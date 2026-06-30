@@ -100,6 +100,24 @@ DESTINATION = (37.7880, -122.4075)   # Union Square
 CENTER_POINT = (37.7918, -122.4006)  # midpoint
 RADIUS_METERS = 1000
 
+## Running the automated tests
+
+This project includes test_main.py, which checks the core algorithm logic using small hand-built graphs rather than real San Francisco data. This means the tests run instantly and do not require an internet connection.
+
+To run the tests:
+
+pip install pytest
+python3 -m pytest test_main.py -v
+
+This runs 6 automated tests covering:
+
+- Lit streets receive no cost penalty
+- Unlit streets receive the full darkness penalty
+- Streets with no lighting data receive a smaller "unknown" penalty
+- Missing length data defaults safely to 1
+- The best-lit algorithm actually detours around a dark street even when it is the shorter option, proving the core algorithm change works as intended
+- Both computed routes are valid, connected paths through the graph
+
 ## Project background
 
 This project was built on Dijkstra's algorithm, the same one behind most navigation apps, is repurposed here to optimize for lighting safety instead of distance, by replacing each street segment's edge weight with a darkness-adjusted cost.
